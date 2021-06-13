@@ -2,11 +2,12 @@
  * @name TogglableBadges
  * @author pog fish
  * @authorId 783404330573234216
- * @version 1.2.0
+ * @version 1.3.0
  * @description Allows you to toggle certain badges
  * @source https://github.com/Gabe616/TogglableBadges/blob/master/TogglableBadges.plugin.js
  * @updateUrl https://raw.githubusercontent.com/Gabe616/TogglableBadges/master/TogglableBadges.plugin.js
  * @website https://github.com/Gabe616/TogglableBadges
+ * @invite thedevs
 */
 /*@cc_on
 @if (@_jscript)
@@ -44,7 +45,7 @@ const TogglableBadges = (() => {
           "github_username": "Gabe616"
         }
       ],
-      "version": "1.2.0",
+      "version": "1.3.0",
       "description": "Allows you to toggle certain badges",
       "github": "https://github.com/Gabe616/TogglableBadges/blob/master/TogglableBadges.plugin.js",
       "github_raw": "https://raw.githubusercontent.com/Gabe616/TogglableBadges/master/TogglableBadges.plugin.js",
@@ -55,6 +56,11 @@ const TogglableBadges = (() => {
         "title": "Bug Fixes",
         "type": "fixed",
         "items": ["The plugin actually saves shit"]
+      },
+      {
+        "title": "TODO",
+        "type": "improved",
+        "items": ["Nitro badges"]
       }
     ]
   };
