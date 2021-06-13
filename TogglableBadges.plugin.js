@@ -173,7 +173,10 @@ DISCORD_CERTIFIED_MODERATOR: { label: "Discord Certified Moderator", value: 1 <<
             return Settings.SettingPanel.build(this.saveSettings.bind(this),
               new Settings.SettingGroup("Badges").append(...Object.keys(this.badges).map(key => {
                 let a = this.badges[key];
-                return new Settings.Switch(a.label, "", this.settings.badges[key.toLowerCase()], (e) => { this.settings.badges[key.toLowerCase()] = e; this.updateFlags(); });
+                return new Settings.Switch(a.label, "", this.settings.badges[key.toLowerCase()], (e) => {
+                  this.settings.badges[key.toLowerCase()] = e;
+                  this.updateFlags();
+                });
               }))
             );
           }
