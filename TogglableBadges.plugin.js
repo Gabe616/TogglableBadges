@@ -2,8 +2,11 @@
  * @name TogglableBadges
  * @author pog fish
  * @authorId 783404330573234216
- * @version 1.0.0
+ * @version 1.2.0
  * @description Allows you to toggle certain badges
+ * @source https://github.com/Gabe616/TogglableBadges/blob/master/TogglableBadges.plugin.js
+ * @updateUrl https://raw.githubusercontent.com/Gabe616/TogglableBadges/master/TogglableBadges.plugin.js
+ * @website https://github.com/Gabe616/TogglableBadges
 */
 /*@cc_on
 @if (@_jscript)
@@ -41,184 +44,17 @@ const TogglableBadges = (() => {
           "github_username": "Gabe616"
         }
       ],
-      "version": "1.0.0",
+      "version": "1.2.0",
       "description": "Allows you to toggle certain badges",
-      "github": "",
-      "github_raw": ""
+      "github": "https://github.com/Gabe616/TogglableBadges/blob/master/TogglableBadges.plugin.js",
+      "github_raw": "https://raw.githubusercontent.com/Gabe616/TogglableBadges/master/TogglableBadges.plugin.js",
+      "icon_folder": "https://raw.githubusercontent.com/Gabe616/TogglableBadges/master/icons/"
     },
     "changelog": [
       {
-        "title": "New Stuff",
-        "items": ["Added more settings", "Added changelog"]
-      },
-      {
-        "title": "Bugs Squashed",
+        "title": "Bug Fixes",
         "type": "fixed",
-        "items": ["React errors on reload"]
-      },
-      {
-        "title": "Improvements",
-        "type": "improved",
-        "items": ["Improvements to the base plugin"]
-      },
-      {
-        "title": "On-going",
-        "type": "progress",
-        "items": [
-          "More modals and popouts being added",
-          "More classes and modules being added"
-        ]
-      }
-    ],
-    "defaultConfig": [
-      {
-        "type": "switch",
-        "id": "grandOverride",
-        "name": "Main Override",
-        "note": "This could be a global override or something idk",
-        "value": false
-      },
-      {
-        "type": "category",
-        "id": "basic",
-        "name": "Basic Settings",
-        "collapsible": true,
-        "shown": false,
-        "settings": [
-          {
-            "type": "textbox",
-            "id": "textbox",
-            "name": "Basic Textbox",
-            "note": "Description of the textbox setting",
-            "value": "nothing",
-            "placeholder": ""
-          },
-          {
-            "type": "dropdown",
-            "id": "dropdown",
-            "name": "Select",
-            "note": "You have choices for now",
-            "value": "weiner",
-            "options": [
-              {
-                "label": "Test 1",
-                "value": "weiner"
-              },
-              {
-                "label": "Test 2",
-                "value": 50
-              },
-              {
-                "label": "Test 3",
-                "value": "{label: \"Test 1\", value: \"weiner\"})"
-              }
-            ]
-          },
-          {
-            "type": "radio",
-            "id": "radio",
-            "name": "Smol Choices",
-            "note": "You have less choices now",
-            "value": 50,
-            "options": [
-              {
-                "name": "Test 1",
-                "value": "weiner",
-                "desc": "This is the first test",
-                "color": "#ff0000"
-              },
-              {
-                "name": "Test 2",
-                "value": 50,
-                "desc": "This is the second test",
-                "color": "#00ff00"
-              },
-              {
-                "name": "Test 3",
-                "value": "{label: \"Test 1\", value: \"weiner\"})",
-                "desc": "This is the third test",
-                "color": "#0000ff"
-              }
-            ]
-          },
-          {
-            "type": "switch",
-            "id": "switch1",
-            "name": "A Switch",
-            "note": "This could be a boolean",
-            "value": false
-          },
-          {
-            "type": "switch",
-            "id": "switch2",
-            "name": "Anotha one",
-            "note": "This could be a boolean2",
-            "value": true
-          },
-          {
-            "type": "switch",
-            "id": "switch3",
-            "name": "Anotha one two",
-            "note": "This could be a boolean3",
-            "value": true
-          },
-          {
-            "type": "switch",
-            "id": "switch4",
-            "name": "Anotha one too",
-            "note": "This could be a boolean4",
-            "value": false
-          }
-        ]
-      },
-      {
-        "type": "category",
-        "id": "advanced",
-        "name": "Advanced Settings",
-        "collapsible": true,
-        "shown": false,
-        "settings": [
-          {
-            "type": "color",
-            "id": "color",
-            "name": "Example Color",
-            "note": "Color up your life",
-            "value": "#ff0000"
-          },
-          {
-            "type": "keybind",
-            "id": "keys",
-            "name": "DJ Khaled",
-            "note": "I got them keys keys keys",
-            "value": [162, 74]
-          },
-          {
-            "type": "slider",
-            "id": "slider1",
-            "name": "Electric Slide",
-            "note": "Down down do your thang do your thang",
-            "value": 30,
-            "min": 0,
-            "max": 100
-          },
-          {
-            "type": "slider",
-            "id": "slider2",
-            "name": "Marker Slide",
-            "note": "Preset markers example",
-            "value": 54,
-            "min": 0,
-            "max": 90,
-            "markers": [0, 9, 18, 27, 36, 45, 54, 63, 72, 81, 90],
-            "stickToMarkers": true
-          },
-          {
-            "type": "file",
-            "id": "fileObj",
-            "name": "File To Upload",
-            "note": "This setting type needs a rewrite..."
-          }
-        ]
+        "items": ["The plugin actually saves shit"]
       }
     ]
   };
@@ -245,36 +81,100 @@ const TogglableBadges = (() => {
         stop() {}
     } : (([Plugin, Api]) => {
       const plugin = (Plugin, Library) => {
-        const {Logger, Patcher} = Library;
+        const {Logger, Patcher, Settings} = Library;
 
         return class TogglableBadges extends Plugin {
+          constructor() {
+            super();
+            this.badges = {
+STAFF:                       { label: "Staff", value: 1 << 0 },
+DISCORD_PARTNER:             { label: "Discord Partner", value: 1 << 1 },
+HYPESQUAD_EVENTS:            { label: "Hypesquad Events", value: 1 << 2 },
+BUGHUNTER_LVL_1:             { label: "Bughunter Level 1", value: 1 << 3 },
+HOUSE_BRAVERY:               { label: "Hypesquad House of Bravery", value: 1 << 6 },
+HOUSE_BRILLIANCE:            { label: "Hypesquad House of Brilliance", value: 1 << 7 },
+HOUSE_BALANCE:               { label: "Hypesquad House of Balance", value: 1 << 8 },
+EARLY_SUPPORTER:             { label: "Early Supporter", value: 1 << 9 },
+BUGHUNTER_LVL_2:             { label: "Bughunter Level 2", value: 1 << 14 },
+EARLY_VERIFIED_DEVELOPER:    { label: "Early Verified Developer", value: 1 << 17 },
+DISCORD_CERTIFIED_MODERATOR: { label: "Discord Certified Moderator", value: 1 << 18 }
+            }
+            let lol = {};
+            for (let i = 0; i < Object.keys(this.badges).length; i++) {
+              let k = Object.keys(this.badges)[i];
+              lol[k.toLowerCase()] = false;
+            }
+            this.defaultSettings = {
+              badges: lol
+            }
+          }
+
           onStart() {
-            Logger.log("Started");
-            Patcher.before(Logger, "log", (t, a) => {
-              a[0] = "Patched Message: " + a[0];
-            });
+            this.updateFlags();
           }
+
           onStop() {
-            Logger.log("Stopped");
-            Patcher.unpatchAll();
+            this.updateFlags();
           }
-          getSettingsPanel() {
-            const panel = this.buildSettingsPanel();
+
+          updateFlags() {
+            let webpack = Object.values(window.webpackJsonp.push([ [], { [''] : (_, e, r) => { e.cache = r.c }}, [ [''] ] ] ).cache);
+            let user = webpack.find(m => m.exports && m.exports.default && !!m.exports.default.getCurrentUser).exports.default.getCurrentUser();
+            user.flags = Object.keys(this.settings.badges).filter(k => !!this.settings.badges[k]).map(a => this.badges[a.toUpperCase()].value).reduce((a, b) => a | b, 0);
+          }
+
+          getSettingsPanel(collapseStates = {}) {
+            /*const panel = this.buildSettingsPanel();
             panel.append(this.buildSetting({
-              type: "switch",
-              id: "otherOverride",
-              name: "A second override?!",
-              note: "wtf is happening here",
-              value: true,
-              onChange: value => this.settings["otherOverride"] = value
+              title: "Badges:",
+              children: Object.keys(this.badges).map(key => ({
+                type: "Switch",
+                plugin: this,
+                keys: ["badges", key],
+                label: this.badges[key].label,
+                value: this.settings.badges[key],
+                labelChildren: [
+									BDFDB.ReactUtils.createElement("img", {style: {width: 28, height: 28}, src: config.info.icon_folder + key})
+								]
+              }))
             }));
             return panel.getElement();
+
+            return BDFDB.PluginUtils.createSettingsPanel(this, {
+              collapseStates,
+              children: () => {
+                let panel = [];
+
+                panel.push(BDFDB.ReactUtils.createElement(BDFDB.LibraryComponents.SettingsPanelList, {
+                  title: "Badges:",
+                  children: Object.keys(this.badges).map(key => BDFDB.ReactUtils.createElement(BDFDB.LibraryComponents.SettingsSaveItem, {
+                    type: "Switch",
+                    plugin: this,
+                    keys: ["badges", key],
+                    label: this.badges[key].label,
+                    value: this.settings.badges[key],
+                    labelChildren: [
+                      BDFDB.ReactUtils.createElement("img", {style: {width: 28, height: 28}, src: config.info.icon_folder + key})
+                    ]
+                  }))
+                }));
+
+                return panel;
+              }
+            });*/
+
+            
+            return Settings.SettingPanel.build(this.saveSettings.bind(this),
+              new Settings.SettingGroup("Badges").append(...Object.keys(this.badges).map(key => {
+                let a = this.badges[key];
+                return new Settings.Switch(a.label, "", this.settings.badges[key.toLowerCase()], (e) => { this.settings.badges[key.toLowerCase()] = e; this.updateFlags(); });
+              }))
+            );
           }
         }
       }
       return plugin(Plugin, Api);
     })(global.ZeresPluginLibrary.buildPlugin(config));
-};
 })();
 
 /*@end@*/
